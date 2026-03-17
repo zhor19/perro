@@ -19,7 +19,7 @@ export class LoginScene extends Phaser.Scene {
         const loginBtn = this.add.text(width / 2, height / 2, 'EMPEZAR JUEGO', {
             fontSize: '24px',
             backgroundColor: '#2ecc71',
-            padding: { x: 20, y: 10 }
+            padding: { x: 30, y: 10 }
         })
         .setOrigin(0.5)
         .setInteractive({ useHandCursor: true });
