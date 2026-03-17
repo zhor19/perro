@@ -1,8 +1,9 @@
 import { Scene } from 'phaser';
+import { Bugfender } from '@bugfender/sdk';
 
 export class PreloaderScene extends Scene {
     constructor() {
-        super('preloader');
+        super('preloaderScene');
     }
 
     preload(): void {
@@ -10,9 +11,11 @@ export class PreloaderScene extends Scene {
         this.load.image('ground', 'ground.png');
         this.load.image('pokemon', 'pokemon.jpg');
 
+        Bugfender.log('Imágenes cargadas correctamente');
     }
 
-    create(): void {
-        this.scene.start('game');
+    create() {
+        Bugfender.log('Assets cargados con éxito. Iniciando GameScene.');
+        this.scene.start('GameScene');
     }
 }

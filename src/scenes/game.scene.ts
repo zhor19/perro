@@ -4,7 +4,7 @@ export class GameScene extends Scene {
     private achoThePup!: Types.Physics.Arcade.ImageWithDynamicBody;
 
     constructor() {
-        super('game');
+        super('GameScene');
     }
 
     create(): void {
