@@ -7,7 +7,7 @@ import { Bugfender } from '@bugfender/sdk';
 Bugfender.init({
     appKey: 'FtFn35B3pKcCyR5gui93phgwoiWTtxCv',
     overrideConsoleMethods: false,
-    printToConsole: true
+    printToConsole: false
 });
 
 const config: Phaser.Types.Core.GameConfig = {
