@@ -45,7 +45,6 @@ export class LoginScene extends Phaser.Scene {
             } 
             catch (e) {
                 Bugfender.error('Error controlado 1: Objeto nulo detectado.');
-                Bugfender.sendException(e as Error);
             }
         });error1Btn.on('pointerdown', () => {
             try {
