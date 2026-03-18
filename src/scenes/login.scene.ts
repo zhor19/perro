@@ -47,6 +47,17 @@ export class LoginScene extends Phaser.Scene {
                 Bugfender.error('Error controlado 1: Objeto nulo detectado.');
                 Bugfender.sendException(e as Error);
             }
+        });error1Btn.on('pointerdown', () => {
+            try {
+                const nullObj: Record<string, unknown> | null = null;
+                // @ts-expect-error - Forzamos el error para el test
+                nullObj.hacerAlgo();
+            } 
+            catch (e) {
+                const error = e as Error;
+                Bugfender.error('Error controlado 1: Objeto nulo detectado.');
+                Bugfender.sendCrash('TestCrash', error.stack || error.message);
+            }
         });
 
         const error2Btn = this.add.text(width / 2, height / 2 + 130, 'TEST ERROR: LÓGICA', {
