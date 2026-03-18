@@ -40,10 +40,12 @@ export class LoginScene extends Phaser.Scene {
         error1Btn.on('pointerdown', () => {
             try {
                 const nullObj: Record<string, unknown> | null = null;
-                // @ts-ignore - Forzamos el error para el test
+                // @ts-expect-error - Forzamos el error para el test
                 nullObj.hacerAlgo();
-            } catch (e) {
+            } 
+            catch (e) {
                 Bugfender.error('Error controlado 1: Objeto nulo detectado.');
+                Bugfender.sendException(e as Error);
             }
         });
 
@@ -61,7 +63,8 @@ export class LoginScene extends Phaser.Scene {
                 if (saldo < 0) {
                     throw new Error('Saldo negativo no permitido');
                 }
-            } catch (e) {
+            } 
+            catch (e) {
                 Bugfender.warn('Error controlado 2: Fallo en validación lógica.');
                 Bugfender.sendIssue('Validación Fallida', 'Intento con saldo negativo');
             }
