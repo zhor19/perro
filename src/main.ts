@@ -1,13 +1,13 @@
 import * as Phaser from 'phaser';
 import { PreloaderScene } from './scenes/preloader.scene';
 import { GameScene } from './scenes/game.scene';
-import { LoginScene } from './scenes/login.scene'; // <-- Importa la nueva escena
+import { LoginScene } from './scenes/login.scene';
 import { Bugfender } from '@bugfender/sdk';
 
 Bugfender.init({
     appKey: 'FtFn35B3pKcCyR5gui93phgwoiWTtxCv',
     overrideConsoleMethods: false,
-    printToConsole: false
+    printToConsole: true
 });
 
 const config: Phaser.Types.Core.GameConfig = {
@@ -20,7 +20,6 @@ const config: Phaser.Types.Core.GameConfig = {
             gravity: { x : 0, y: 500 }
         }
     },
-    // LoginScene de primera para que sea la pantalla inicial
     scene: [LoginScene, PreloaderScene, GameScene], 
     backgroundColor: '#21213B'
 };

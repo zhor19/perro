@@ -19,49 +19,51 @@ export class LoginScene extends Phaser.Scene {
         const loginBtn = this.add.text(width / 2, height / 2, 'EMPEZAR JUEGO', {
             fontSize: '24px',
             backgroundColor: '#2ecc71',
-            padding: { x: 30, y: 10 }
+            padding: { x: 20, y: 10 }
         })
-        .setOrigin(0.5)
-        .setInteractive({ useHandCursor: true });
+            .setOrigin(0.5)
+            .setInteractive({ useHandCursor: true });
 
         loginBtn.on('pointerdown', () => {
-
             Bugfender.log('Usuario pulsó el botón de inicio. Transicionando al juego.');
-            this.scene.start('preloaderScene'); 
+            this.scene.start('preloaderScene');
         });
+
         const error1Btn = this.add.text(width / 2, height / 2 + 80, 'TEST ERROR: REFERENCIA', {
             fontSize: '18px',
             backgroundColor: '#e74c3c',
             padding: { x: 10, y: 5 }
         })
-        .setOrigin(0.5)
-        .setInteractive({ useHandCursor: true });
+            .setOrigin(0.5)
+            .setInteractive({ useHandCursor: true });
 
         error1Btn.on('pointerdown', () => {
             try {
-                const nullObj: any = null;
-                nullObj.Fallar();
+                const nullObj: Record<string, unknown> | null = null;
+                // @ts-ignore - Forzamos el error para el test
+                nullObj.hacerAlgo();
             } catch (e) {
                 Bugfender.error('Error controlado 1: Objeto nulo detectado.');
             }
         });
 
-        // Error Tipo 2: Error de Lógica/Validación
         const error2Btn = this.add.text(width / 2, height / 2 + 130, 'TEST ERROR: LÓGICA', {
             fontSize: '18px',
             backgroundColor: '#f39c12',
             padding: { x: 10, y: 5 }
         })
-        .setOrigin(0.5)
-        .setInteractive({ useHandCursor: true });
+            .setOrigin(0.5)
+            .setInteractive({ useHandCursor: true });
 
         error2Btn.on('pointerdown', () => {
             try {
                 const saldo = -100;
-                if (saldo < 0) throw new Error("Saldo negativo no permitido");
+                if (saldo < 0) {
+                    throw new Error('Saldo negativo no permitido');
+                }
             } catch (e) {
                 Bugfender.warn('Error controlado 2: Fallo en validación lógica.');
-                Bugfender.sendIssue('Validación Fallida', 'El usuario intentó una acción con saldo negativo');
+                Bugfender.sendIssue('Validación Fallida', 'Intento con saldo negativo');
             }
         });
     }

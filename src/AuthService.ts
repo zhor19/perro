@@ -5,8 +5,8 @@ export class AuthService {
         Bugfender.info(`Intento de login para el usuario: ${username}`);
         
         if (username.length < 3) {
-            Bugfender.error('Error de validación: El nombre es demasiado corto');
-            throw new Error("Nombre de usuario inválido");
+            Bugfender.error('Error de validation: El nombre es demasiado corto');
+            throw new Error('Nombre de usuario inválido');
         }
         
         Bugfender.setDeviceKey('username', username);
